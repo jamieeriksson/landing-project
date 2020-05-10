@@ -31,6 +31,9 @@ function setActive(entries) {
     if (entry.isIntersecting) {
       document.querySelector(".active").classList.remove("active");
       entry.target.classList.add("active");
+
+      document.querySelector(".activeNav").classList.remove("activeNav");
+      document.querySelector(`#${id}Nav`).classList.add("activeNav");
     }
   });
 }
