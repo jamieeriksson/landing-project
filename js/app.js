@@ -35,9 +35,13 @@ const sections = Array.prototype.slice.call(
   document.querySelectorAll("section[data-nav]")
 );
 
+// Add a new li element to the nav bar with .menu__link class (could maybe change this to a forEach loop?)
 for (section of sections) {
-  let navItem = document.createElement("li");
-  let navName = document.createTextNode(section.getAttribute("data-nav"));
+  const navItem = document.createElement("li");
+  const linkClass = document.createAttribute("class");
+  linkClass.value = "menu__link";
+  navItem.setAttributeNode(linkClass);
+  const navName = document.createTextNode(section.getAttribute("data-nav"));
   navItem.appendChild(navName);
   document.getElementById("navbar__list").appendChild(navItem);
 }
