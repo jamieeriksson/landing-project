@@ -38,11 +38,20 @@ function setActive(entries) {
   });
 }
 
+function hideNav() {
+  if (window.scrollY < 150) {
+    document.querySelector(".page__header").style.top = "0px";
+  } else {
+    document.querySelector(".page__header").style.top = "-60px";
+  }
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
  *
  */
+
 // Create scroll active functionality with Intersection Observer
 let options = {
   rootMargin: "0px",
@@ -84,6 +93,14 @@ for (section of sections) {
   observer.observe(section);
 }
 
+// Add event for hiding nav bar when not scrolling, nav bar will show at top of page
+window.addEventListener("scroll", function () {
+  setTimeout(function () {
+    hideNav();
+  }, 500);
+
+  document.querySelector(".page__header").style.top = "0px";
+});
 // Add class 'active' to section when near top of viewport
 
 // Scroll to anchor ID using scrollTO event
