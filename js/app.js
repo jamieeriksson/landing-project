@@ -95,3 +95,12 @@ window.addEventListener("scroll", function () {
 
   document.querySelector(".page__header").style.top = "0px";
 });
+
+// Add event for showing nav bar when mouse hovers at top of page
+window.onmousemove = function () {
+  if (event.clientY < 50) {
+    document.querySelector(".page__header").style.top = "0px";
+  } else {
+    document.querySelector(".page__header").style.top = "-60px";
+  }
+};
