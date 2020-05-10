@@ -53,6 +53,8 @@ for (section of sections) {
     document.querySelector(`#${sectId}`).scrollIntoView({
       behavior: "smooth",
     });
+    document.querySelector(".active").classList.remove("active");
+    document.querySelector(`#${sectId}`).classList.add("active");
   });
 }
 
