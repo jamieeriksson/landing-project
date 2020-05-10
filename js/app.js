@@ -58,15 +58,23 @@ for (section of sections) {
   const sectId = section.getAttribute("id");
 
   const navItem = document.createElement("li");
+
+  const navLink = document.createElement("a");
   const linkClass = document.createAttribute("class");
   linkClass.value = "menu__link";
-  navItem.setAttributeNode(linkClass);
+  navLink.setAttributeNode(linkClass);
+  const navAnchor = document.createAttribute("href");
+  navAnchor.value = `#${sectId}`;
+  navLink.setAttributeNode(navAnchor);
   const navName = document.createTextNode(section.getAttribute("data-nav"));
-  navItem.appendChild(navName);
+  navLink.appendChild(navName);
+  navItem.appendChild(navLink);
+
   document.getElementById("navbar__list").appendChild(navItem);
 
   // Add event listener to each nav item
-  navItem.addEventListener("click", function () {
+  navLink.addEventListener("click", function (event) {
+    event.preventDefault();
     document.querySelector(`#${sectId}`).scrollIntoView({
       behavior: "smooth",
     });
