@@ -100,7 +100,7 @@ window.addEventListener("scroll", function () {
 window.onmousemove = function () {
   if (event.clientY < 50) {
     document.querySelector(".page__header").style.top = "0px";
-  } else {
+  } else if (window.scrollY > 150) {
     document.querySelector(".page__header").style.top = "-60px";
   }
 };
