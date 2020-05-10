@@ -39,12 +39,12 @@ h2 {
   border-bottom: 1px solid #cc1;
   font-family: "Oxygen", Sans-Serif;
   font-size: 3em;
-  color: #fff;
+  color: #999;
 }
 
 p {
   line-height: 1.6em;
-  color: #eee;
+  color: #888;
 }
 
 /* ---- Layout Rules ---- */
@@ -208,9 +208,17 @@ section.active {
   background: rgb(0, 0, 0);
   background: linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 100%,
     rgba(0, 0, 0, 0) 100%
   );
+}
+
+section.active h2 {
+  color: #fff;
+}
+
+section.active p {
+  color: #eee;
 }
 
 section.active .landing__container::before {
