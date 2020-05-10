@@ -26,8 +26,9 @@
 // Function which sets the active class to a section when it has entered 75% into view
 function setActive(entries) {
   entries.forEach((entry) => {
+    const id = entry.target.getAttribute("id");
+
     if (entry.isIntersecting) {
-      console.log(entry.target.getAttribute("id"));
       document.querySelector(".active").classList.remove("active");
       entry.target.classList.add("active");
     }
@@ -58,14 +59,10 @@ for (section of sections) {
   const sectId = section.getAttribute("id");
 
   const navItem = document.createElement("li");
-
+  navItem.id = `${sectId}Nav`;
   const navLink = document.createElement("a");
-  const linkClass = document.createAttribute("class");
-  linkClass.value = "menu__link";
-  navLink.setAttributeNode(linkClass);
-  const navAnchor = document.createAttribute("href");
-  navAnchor.value = `#${sectId}`;
-  navLink.setAttributeNode(navAnchor);
+  navLink.className = "menu__link";
+  navLink.href = `#${sectId}`;
   const navName = document.createTextNode(section.getAttribute("data-nav"));
   navLink.appendChild(navName);
   navItem.appendChild(navLink);
