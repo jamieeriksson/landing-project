@@ -13,16 +13,28 @@
  *
  */
 
-/**
- * Define Global Variables
- *
- */
+/* ---- Begin function declarations ---- */
 
-/**
- * End Global Variables
- * Start Helper Functions
- *
- */
+function addToNav(name, idAtt) {
+  const navItem = document.createElement("li");
+  navItem.id = `${idAtt}Nav`;
+  const navLink = document.createElement("a");
+  navLink.className = "menu__link";
+  navLink.href = `#${idAtt}`;
+  const navName = document.createTextNode(name);
+  navLink.appendChild(navName);
+  navItem.appendChild(navLink);
+  document.getElementById("navbar__list").appendChild(navItem);
+
+  // Add event listener to each nav item
+  navLink.addEventListener("click", function (event) {
+    event.preventDefault();
+    document.querySelector(`#${idAtt}`).scrollIntoView({
+      behavior: "smooth",
+    });
+  });
+}
+
 // Function which sets the active class to a section when it has entered 75% into view
 function setActive(entries) {
   entries.forEach((entry) => {
@@ -46,13 +58,9 @@ function hideNav() {
   }
 }
 
-/**
- * End Helper Functions
- * Begin Main Functions
- *
- */
+/* ---- End function declarations ---- */
 
-// Create scroll active functionality with Intersection Observer
+// Set up Intersection Observer for section active states functionality
 let options = {
   rootMargin: "0px",
   threshold: 0.75,
@@ -60,38 +68,24 @@ let options = {
 
 let observer = new IntersectionObserver(setActive, options);
 
-// Create array of all of the sections within landing page
+/* ---- Fill in navigation bar ---- */
+// Get an array of all of the sections within landing page
 const sections = Array.prototype.slice.call(
   document.querySelectorAll("section[data-nav]")
 );
 
+// Loop through each section and add to nav bar
 for (section of sections) {
   // Add a new li element to the nav bar with .menu__link class (could maybe change this to a forEach loop?)
   const sectName = section.getAttribute("data-nav");
   const sectId = section.getAttribute("id");
 
-  const navItem = document.createElement("li");
-  navItem.id = `${sectId}Nav`;
-  const navLink = document.createElement("a");
-  navLink.className = "menu__link";
-  navLink.href = `#${sectId}`;
-  const navName = document.createTextNode(section.getAttribute("data-nav"));
-  navLink.appendChild(navName);
-  navItem.appendChild(navLink);
+  addToNav(sectName, sectId);
 
-  document.getElementById("navbar__list").appendChild(navItem);
-
-  // Add event listener to each nav item
-  navLink.addEventListener("click", function (event) {
-    event.preventDefault();
-    document.querySelector(`#${sectId}`).scrollIntoView({
-      behavior: "smooth",
-    });
-  });
-
-  // Create Intersection Observer target on each section
+  // Create Intersection Observer target on each section to identify active states
   observer.observe(section);
 }
+/* ---- End filling in navigation bar ---- */
 
 // Add event for hiding nav bar when not scrolling, nav bar will show at top of page
 window.addEventListener("scroll", function () {
@@ -101,18 +95,3 @@ window.addEventListener("scroll", function () {
 
   document.querySelector(".page__header").style.top = "0px";
 });
-// Add class 'active' to section when near top of viewport
-
-// Scroll to anchor ID using scrollTO event
-
-/**
- * End Main Functions
- * Begin Events
- *
- */
-
-// Build menu
-
-// Scroll to section on link click
-
-// Set sections as active
