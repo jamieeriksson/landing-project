@@ -23,14 +23,31 @@
  * Start Helper Functions
  *
  */
+// Function which sets the active class to a section when it has entered 75% into view
+function setActive(entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      console.log(entry.target.getAttribute("id"));
+      document.querySelector(".active").classList.remove("active");
+      entry.target.classList.add("active");
+    }
+  });
+}
 
 /**
  * End Helper Functions
  * Begin Main Functions
  *
  */
+// Create scroll active functionality with Intersection Observer
+let options = {
+  rootMargin: "0px",
+  threshold: 0.75,
+};
 
-// build the nav
+let observer = new IntersectionObserver(setActive, options);
+
+// Create array of all of the sections within landing page
 const sections = Array.prototype.slice.call(
   document.querySelectorAll("section[data-nav]")
 );
@@ -53,9 +70,10 @@ for (section of sections) {
     document.querySelector(`#${sectId}`).scrollIntoView({
       behavior: "smooth",
     });
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector(`#${sectId}`).classList.add("active");
   });
+
+  // Create Intersection Observer target on each section
+  observer.observe(section);
 }
 
 // Add class 'active' to section when near top of viewport
