@@ -54,7 +54,7 @@ function hideNav() {
   if (window.scrollY < 150) {
     document.querySelector(".page__header").style.top = "0px";
   } else {
-    document.querySelector(".page__header").style.top = "-60px";
+    document.querySelector(".page__header").style.top = "-220px";
   }
 }
 
@@ -63,7 +63,7 @@ function hideNav() {
 // Set up Intersection Observer for section active states functionality
 let options = {
   rootMargin: "0px",
-  threshold: 0.75,
+  threshold: 0.5,
 };
 
 let observer = new IntersectionObserver(setActive, options);
@@ -101,6 +101,6 @@ window.onmousemove = function () {
   if (event.clientY < 50) {
     document.querySelector(".page__header").style.top = "0px";
   } else if (window.scrollY > 150) {
-    document.querySelector(".page__header").style.top = "-60px";
+    document.querySelector(".page__header").style.top = "-220px";
   }
 };
