@@ -50,13 +50,14 @@ function setActive(entries) {
   });
 }
 
-function hideNav() {
-  if (window.scrollY < 150) {
-    document.querySelector(".page__header").style.top = "0px";
-  } else {
-    document.querySelector(".page__header").style.top = "-220px";
-  }
-}
+/* ---- Optional hiding of the nav bar when not scrolling ---- */
+// function hideNav() {
+//   if (window.scrollY < 150) {
+//     document.querySelector(".page__header").style.top = "0px";
+//   } else {
+//     document.querySelector(".page__header").style.top = "-220px";
+//   }
+// }
 
 /* ---- End function declarations ---- */
 
@@ -87,20 +88,21 @@ for (section of sections) {
 }
 /* ---- End filling in navigation bar ---- */
 
+/* ---- Optional hiding of the nav bar when not scrolling ---- */
 // Add event for hiding nav bar when not scrolling, nav bar will show at top of page
-window.addEventListener("scroll", function () {
-  setTimeout(function () {
-    hideNav();
-  }, 500);
+// window.addEventListener("scroll", function () {
+//   setTimeout(function () {
+//     hideNav();
+//   }, 500);
 
-  document.querySelector(".page__header").style.top = "0px";
-});
+//   document.querySelector(".page__header").style.top = "0px";
+// });
 
-// Add event for showing nav bar when mouse hovers at top of page
-window.onmousemove = function () {
-  if (event.clientY < 50) {
-    document.querySelector(".page__header").style.top = "0px";
-  } else if (window.scrollY > 150) {
-    document.querySelector(".page__header").style.top = "-220px";
-  }
-};
+// // Add event for showing nav bar when mouse hovers at top of page
+// window.onmousemove = function () {
+//   if (event.clientY < 50) {
+//     document.querySelector(".page__header").style.top = "0px";
+//   } else if (window.scrollY > 150) {
+//     document.querySelector(".page__header").style.top = "-220px";
+//   }
+// };
